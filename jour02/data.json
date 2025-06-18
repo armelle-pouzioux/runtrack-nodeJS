@@ -1,0 +1,21 @@
+[
+  {
+    "id": 1,
+    "title": "Apprendre Node.js",
+    "description": "Suivre la journée 2 du runtrack",
+    "status": "à faire"
+  }
+  ,
+  {
+    "id": 2,
+    "title": "Créer une API REST",
+    "description": "Développer une API pour gérer les tâches",
+    "status": "en cours"
+  },
+  {
+    "id": 3,
+    "title": "Tester l'API",
+    "description": "Écrire des tests pour l'API développée",
+    "status": "terminé"
+  }
+]
