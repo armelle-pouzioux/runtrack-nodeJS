@@ -1,0 +1,68 @@
+job01 // installer mongoDB
+job02 // Lister les bases existantes
+
+    show dbs --> voir les bases existantes
+
+
+job03 // Créer une base "shop" et une collection 
+
+    use shop --> créer la base, mais elle existera seulement quand j'y ajouterais une donnée
+
+    db.createCollection("product") --> je rentre la collection product dans ma base shop 
+
+job04-05 // Ajouter plusieurs documents d'un coup
+
+    db.product.insertMany([...]) --> ajout de plusieurs documents
+
+    db.product.find().pretty() --> vérifier l'insertion 
+
+
+job06 // Lister les collections de la base
+
+    show collections --> liste les collections
+
+job07-12 // Requêtes de filtre, tri, limite, comparaison 
+
+    *db.product.find().sort({ price: 1 }).pretty() --> 
+    Trier les produits par prix croissant (price ASC) 
+    1 = odre croissant
+
+    *db.product.find().sort({ price: -1 }).pretty() -->  
+    Trier les produits par prix décroissant (price DESC) 
+    -1 = ordre décroissant
+
+    *db.product.find({ price: { $gt: 5 }, quantity: { $lt: 100 } }).pretty() --> 
+    Récupérer les produits avec : prix > 5 € ET stock < 100 
+    $gt = greater than (supérieur à)
+    $lt = less than (inférieur à)
+
+    *db.product.find({
+        $or: [
+            { price: { $gt: 14.99 } },
+            { quantity: { $gt: 100 } }
+         ]
+    }).pretty() -->
+    Récupérer les produits avec : prix > 14.99 € OU stock > 100
+    $or = au moins une des conditions doit être vraie
+
+    *db.product.find({}, { _id: 0 }).pretty() -->
+    Récupérer les produits sans leurs ID
+    {} = pas de filtre
+    {_id: 0} = exclu le champ _id
+
+    *db.category.find().limit(1) -->
+    *db.category.find({ _id: ObjectId("664f5a1234567890abcdef01") }).pretty()-->
+    Récupérer une catégorie par son ID
+
+    *db.category.updateOne(
+        { name: "bébé" },
+        { $set: { name: "Vêtements pour enfant" } }
+    ) -->
+    Modifier le nom de la catégorie
+
+
+job13 // Afficher l'id
+job14 // Chercher un document par son id
+job15 // Modifier une catégorie
+job16 // Créer une relation entre produits et catégories (category_id)
+job17 // Trouver la catégorie avec le moins d'article 
